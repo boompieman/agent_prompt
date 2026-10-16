@@ -33,7 +33,7 @@ function templates() {
   const setup = read('SETUP.md');
   const sec = setup.split(/^## §4/m)[1];
   if (!sec) return [];
-  const want = ['範本', '綁定能力', '做什麼', '頻率預設', '車道', '前置連結器'];
+  const want = ['範本', '綁定能力／技能', '做什麼', '頻率預設', '車道', '前置連結器'];
   const rows = sec.split('\n').filter((l) => l.trim().startsWith('|')).map((l) => l.split('|').slice(1, -1).map((c) => c.trim()));
   const head = rows.findIndex((r) => want.every((w, i) => r[i] === w));
   if (head < 0) return [];
@@ -113,8 +113,8 @@ ${A.length ? `<div class="grid">${A.map((a) => `<div class="card">
 </div>`).join('\n')}</div>` : '<p class="sub">還沒有員工（<code>.claude/agents/</code> 是空的）。</p>'}
 
 <h2>排程範本（隨包附上，不會自動啟用）</h2>
-${T.length ? `<div class="scroll"><table><thead><tr>${['範本', '綁定能力', '做什麼', '頻率預設', '車道', '前置連結器'].map((h) => `<th>${h}</th>`).join('')}</tr></thead><tbody>
-${T.map((r) => `<tr>${['範本', '綁定能力', '做什麼', '頻率預設', '車道', '前置連結器'].map((k) => `<td>${esc(r[k])}</td>`).join('')}</tr>`).join('\n')}
+${T.length ? `<div class="scroll"><table><thead><tr>${['範本', '綁定能力／技能', '做什麼', '頻率預設', '車道', '前置連結器'].map((h) => `<th>${h}</th>`).join('')}</tr></thead><tbody>
+${T.map((r) => `<tr>${['範本', '綁定能力／技能', '做什麼', '頻率預設', '車道', '前置連結器'].map((k) => `<td>${esc(r[k])}</td>`).join('')}</tr>`).join('\n')}
 </tbody></table></div>` : '<p class="sub">解析不到 SETUP.md §4 的表格。</p>'}
 
 <footer>
