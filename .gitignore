@@ -47,3 +47,13 @@ ENV/
 # IDE
 .idea/
 *.iml
+
+# ── AI 一人公司 ──────────────────────────────────────────────
+# 對話原文只留在本機。SETUP §1 向使用者保證過不會上傳，不要 commit。
+Sessionlog/*
+!Sessionlog/.gitkeep
+!Sessionlog/README.md
+
+# 工具產生的，clone 回去跑 doctor／build 會重建
+offline/index.html
+.claude/skills/

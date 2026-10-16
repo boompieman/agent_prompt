@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh \"${CLAUDE_PROJECT_DIR:-.}/.claude/hooks/py.sh\" \"${CLAUDE_PROJECT_DIR:-.}/.claude/hooks/audit.py\" --hook 2>/dev/null || true",
+            "statusMessage": "看一下你手上在跑的事",
+            "timeout": 20
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh \"${CLAUDE_PROJECT_DIR:-.}/.claude/hooks/py.sh\" \"${CLAUDE_PROJECT_DIR:-.}/.claude/hooks/extract.py\" --since-days 2 >/dev/null 2>&1 || true",
+            "statusMessage": "把這場對話存起來",
+            "timeout": 60,
+            "async": true
+          }
+        ]
+      }
+    ]
+  }
+}
